@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace hepsiSefBlog
 {
@@ -36,7 +37,15 @@ namespace hepsiSefBlog
             services.AddControllers();
             services.AddScoped<RecipeRepository>();
             services.AddTransient<RecipeService>();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("", new OpenApiInfo { 
+                    Version = "v1",
+                    Title = "HepsiSef API",
+                    Description = "HepsiSef com için tasarlanan api"
+                });
 
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -47,7 +56,12 @@ namespace hepsiSefBlog
             }
 
             app.UseHttpsRedirection();
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.jon", "HepsiSef API v1 test");
+                c.RoutePrefix = string.Empty;
+            });
             app.UseRouting();
 
             app.UseAuthorization();
