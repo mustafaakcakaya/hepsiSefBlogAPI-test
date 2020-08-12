@@ -21,6 +21,7 @@ namespace hepsiSefBlog.Controllers
         {
             _service = service;
         }
+        //TODO: add /// comment to notice and give information to clients 
         //Get api/recipes/getall
         [HttpGet]
         public IActionResult GetAll()
