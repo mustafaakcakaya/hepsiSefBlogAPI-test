@@ -31,12 +31,15 @@ namespace hepsiSefBlog.Service.Services
                 Ingredients = x.Ingredients,
                 Tags = x.Tags
             }).ToList();
-
+            if (recipes.Count == 0)
+            {
+                return null;
+            }
             return recipes;
         }
         public RecipeResponse Get(int id)
         {
-            var recipeEntity = _repository.GetRecipeByFilter(x=>x.Id == id);
+            var recipeEntity = _repository.GetRecipeByFilter(x => x.Id == id);
             return new RecipeResponse
             {
                 Id = recipeEntity.Id,
