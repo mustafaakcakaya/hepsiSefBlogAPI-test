@@ -25,7 +25,7 @@ namespace hepsiSefBlog.Data.Context.Repos
         {
             //INFO: null gidebilir.
             //TODO: service'de kontrol edilmeli.
-            return _context.Recipe.Where(filter).FirstOrDefault();
+            return _context.Recipes.Where(filter).FirstOrDefault();
         }
 
         public int Update(Recipe entity)
@@ -43,9 +43,9 @@ namespace hepsiSefBlog.Data.Context.Repos
         public ICollection<Recipe> GetRecipes(Expression<Func<Recipe, bool>> filter = null)
         {
             if (filter == null)
-                return _context.Recipe.ToList();
+                return _context.Recipes.ToList();
 
-            return _context.Recipe.Where(filter).ToList();
+            return _context.Recipes.Where(filter).ToList();
         }
 
 

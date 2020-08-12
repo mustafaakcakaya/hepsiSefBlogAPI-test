@@ -9,7 +9,7 @@ Id int primary key identity,
 HowTo nvarchar(1500) not null, 
 Ingredients nvarchar(500) not null,
 Title nvarchar(100) not null,
-ImageUrlList nvarchar(500) not null,
+ImgList nvarchar(500) not null,
 Tags nvarchar(500) not null
 )
 
