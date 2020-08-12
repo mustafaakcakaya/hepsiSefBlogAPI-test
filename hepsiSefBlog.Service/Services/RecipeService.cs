@@ -31,7 +31,10 @@ namespace hepsiSefBlog.Service.Services
                 Ingredients = x.Ingredients,
                 Tags = x.Tags
             }).ToList();
-
+            if (recipes.Count==0)
+            {
+                return null;
+            }
             return recipes;
         }
         public RecipeResponse Get(int id)
